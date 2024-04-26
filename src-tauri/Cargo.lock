@@ -3,9 +3,10 @@
 version = 3
 
 [[package]]
-name = "Rosary"
-version = "1.0.3"
+name = "R-Lib"
+version = "1.0.0"
 dependencies = [
+ "control",
  "serde",
  "serde_json",
  "tauri",
@@ -351,6 +352,10 @@ dependencies = [
  "bytes",
  "memchr",
 ]
+
+[[package]]
+name = "control"
+version = "0.1.0"
 
 [[package]]
 name = "convert_case"

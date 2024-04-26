@@ -17,15 +17,17 @@ header {
   top:0px;
   width:100%;
   text-align:center;
-  Overflow-x:scroll;
   position:sticky;
   z-index:1;
+}
+.menscroll {
+  Overflow-y:scroll;
 }
 iframe {
    border-color:transparent;
    width:100vw;
    height:800px;
-   Overflow-x:scroll;
+   Overflow-y:scroll;
    background-color: #FFFFFF;
 }
 ul {
@@ -33,10 +35,10 @@ ul {
   text-align:center;
 }
 td {
-  width:50%;
+  width:100%;
 }
 th {
-  width:50%;
+  width:100%;
   }
 tr {
 width:100%;
@@ -59,12 +61,16 @@ border-bottom:1px solid black;
   border-top:1px solid lightgray;
   border-bottom:1px solid lightgray;
   border-right:1px solid lightgray;
-  padding-top: 20px;
-  padding-bottom:20px;
+  padding-top: 3px;
+  padding-bottom:3px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  width:100%;
+}
+.mensource {
+  width:100%;
 }
 .container {
   margin: 0;
@@ -109,7 +115,7 @@ input,
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.3em 0.6em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;

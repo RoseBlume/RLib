@@ -1,11 +1,12 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 
 function App() {
-  const [furl, setfurl] = useState("Books/The_Temptation_Of_Saint_Anthony.html");
+  const [furl, setfurl] = useState("https://rccdsb.ca/");
   const [menshow, setMenshow] = useState(false);
+  const [noteshow, setNoteshow] = useState(false);
+  const [urlshow, setUrlshow] = useState(false);
   // This will wait for the window to load, but you could
   // run this function on whatever trigger you want
  // 	invoke('close_splashscreen')
@@ -27,6 +28,9 @@ function App() {
     invoke('open_splashscreen')
   }
   */
+  async function toggleurl() {
+    setUrlshow((urlshow) => !urlshow)
+  }
   async function togglemenu() {
     setMenshow((menshow) => !menshow)
     }
@@ -40,25 +44,25 @@ function App() {
   //}
  //<embed type="text/html" href="/Books/City_Of_God_Volume_1.html" width="100%" height="10000"/>
 //{() => setfurl("menu.html")}
+//{menshow && <tr><td><button class="mensource" onClick={() => {setfurl("https://scholar.google.ca"); togglemenu(); setUrlshow(true)}}><h2>Google Scholar</h2></button></td></tr>}
   return (
     <div className="container">
     <header>
-    	<button class="menu" onClick={togglemenu}>
+    	<button class="mentop" onClick={() => {togglemenu(); setUrlshow(false)}}>
     		<h2>Menu</h2>
     	</button>
     	</header>
-    	<table>
-    	<tr id="titles">
-    	{menshow && <td class="mentop"><h2>Books</h2></td>}
-    	{menshow && <td class="mentop"><h2 >Bibles</h2></td>}
-    	</tr>
-    	{menshow && <tr><td class="books"><button class="menu" onClick={() => {setfurl("Books/Catechism/_INDEX.HTM"); togglemenu()}}><h3>The Catechism Of The Catholic Church</h3></button></td><td class="bibles"><button class="menu" onClick={() => {setfurl("Bibles/NIV.html"); togglemenu()}}><h3>New International Version</h3></button></td></tr>}
-    	{menshow && <tr><td class="books"><button class="menu" onClick={() => {setfurl("Books/Compendium.html"); togglemenu()}}><h3>Compendium Of The Social Doctrine Of The Church</h3></button></td><td class="bibles"><button class="menu" onClick={() => {setfurl("Bibles/King_James.html"); togglemenu()}}><h3>The King James Bible</h3></button></td></tr>}
-    	{menshow && <tr><td class="books"><button class="menu" onClick={() => {setfurl("Books/The_Temptation_Of_Saint_Anthony.html"); togglemenu()}}><h3>The Temptation Of Saint Anthony</h3></button></td> <td class="bibles"><button class="menu" onClick={() => {setfurl("/Bibles/American/_INDEX.HTM"); togglemenu()}}><h3>The New American Bible</h3></button></td></tr>}
-    	{menshow && <tr><td class="books"><button class="menu" onClick={() => {setfurl("Books/The_Confession_Of_Saint_Augustine.html"); togglemenu()}}><h3>The Confession Of Saint Augustine</h3></button></td></tr>}
-    	{menshow && <tr><td class="books"><button class="menu" onClick={() => {setfurl("Books/City_Of_God_Volume_1.html"); togglemenu()}}><h3>City Of God Volume 1</h3></button></td></tr>}
-    	{menshow && <tr><td class="books"><button class="menu" onClick={() => {setfurl("Books/City_Of_God_Volume_2.html"); togglemenu()}}><h3>City Of God Volume 2</h3></button></td></tr>}
+    	<table class="menscroll">
+    	{menshow && <tr><td><button class="mensource" onClick={() => {setfurl("https://rccdsb.ca/"); togglemenu(); setUrlshow(false)}}><h2>Bishop Dashboard</h2></button></td></tr>}
+    	{menshow && <tr><td><h2>Research Sources</h2></td></tr>}
+    	{menshow && <tr><td><button class="mensource" onClick={() => {setfurl("https://gutenberg.org/"); togglemenu(); setUrlshow(true)}}><h2>Project Gutenberg</h2></button></td></tr>}
+    	{menshow && <tr><td><h2>Citation</h2></td></tr>}
+    	{menshow && <tr><td><button class="mensource" onClick={() => {setfurl("https://www.citationmachine.net/apa"); togglemenu(); setUrlshow(true)}}><h2>APA</h2></button></td></tr>}
+    	{menshow && <tr><td><button class="mensource" onClick={() => {setfurl("https://www.citationmachine.net/mla"); togglemenu(); setUrlshow(true)}}><h2>MLA</h2></button></td></tr>}
+    	{menshow && <tr><td>Research Integrity<h2></h2></td></tr>}
     	</table>
+    	{noteshow && <div id="notearea"><textfield></textfield></div>}
+        {urlshow && <h4>{furl}</h4>}
       {!menshow && <iframe id="viewarea" src={furl} loading="lazy" />}
       </div>
   );

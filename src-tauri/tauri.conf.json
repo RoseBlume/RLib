@@ -6,8 +6,8 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "rosary-tauri",
-    "version": "1.0.3"
+    "productName": "r-lib",
+    "version": "1.0.0"
   },
   "tauri": {
     "allowlist": {
@@ -19,7 +19,7 @@
     },
     "windows": [
       {
-      	"title": "Rosary",
+      	"title": "R-Lib",
       	"label": "main",
     	"resizable": true,
     	"fullscreen": false,
